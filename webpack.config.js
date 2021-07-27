@@ -1,18 +1,17 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { DefinePlugin } = require('webpack');
 const path = require('path');
 
 module.exports = {
     mode: 'development',
     target: 'web',
-    entry: './src/main.jsx',
+    entry: './src/main.tsx',
     output: {
         path: __dirname + '/build',
         filename: 'bundle.js',
         publicPath: '/',
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.css',]
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.css',]
     },
     devtool: 'inline-source-map',
     module: {
@@ -53,7 +52,7 @@ module.exports = {
         }),
     ],
     devServer: {
-        port: 3000,
+        port: 9000,
         contentBase: path.join(__dirname, 'build'),
         publicPath: '/',
         hot: true,
