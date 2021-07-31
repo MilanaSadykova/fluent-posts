@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { CreatePost } from "./components/create-post/CreatePost";
+import { FluentPosts } from "./components/fluents-posts/FluentPosts";
 import './main.styles.scss';
 
 
 
 ReactDOM.render(
     <div className='container'>
-        <CreatePost />
+        <FluentPosts />
     </div>,
     document.getElementById("root")
 );
