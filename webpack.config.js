@@ -7,11 +7,10 @@ module.exports = {
     entry: './src/main.tsx',
     output: {
         path: __dirname + '/build',
-        filename: 'bundle.js',
         publicPath: '/',
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.css',]
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss',]
     },
     devtool: 'inline-source-map',
     module: {
@@ -37,7 +36,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
+                test: /\.scss$/,
                 use: [
                     'style-loader',
                     'css-loader',
