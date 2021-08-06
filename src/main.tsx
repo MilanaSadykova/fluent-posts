@@ -1,24 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Link, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import { Header } from "./components/header/Header";
 import { FluentPosts } from "./components/fluents-posts/FluentPosts";
-import { CreatePost } from "./components/create-post/CreatePost";
+import { CreatePostPage } from "./components/create-post/CreatePostPage";
 import './main.styles.scss';
 
+import { createStore, applyMiddleware, Middleware } from 'redux';
+import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { RootReducer } from "./reducers/buttonReducer";
+import thunk, { ThunkAction } from "redux-thunk";
 
+const store = createStore(RootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
-    <div className='container'>
+    <Provider store={store}>
         <BrowserRouter>
             <Header />
             <Route path='/fluent-posts'>
                 <FluentPosts />
             </Route>
             <Route path='/create-post'>
-                <CreatePost />
+                <CreatePostPage />
             </Route>
         </BrowserRouter>
-    </div>,
+    </Provider>,
     document.getElementById("root")
 );
+

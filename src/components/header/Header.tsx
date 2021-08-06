@@ -1,13 +1,51 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import './Header.styles';
+import { Nav, INavStyles, INavLinkGroup } from '@fluentui/react/lib/Nav';
+
 export const Header = () => {
 
+    const navStyles: Partial<INavStyles> = {
+        root: {
+            border: '1px solid #eee'
+        },
+        navItem: {
+
+        }
+    };
+
+    const navLinks: INavLinkGroup[] = [
+        {
+            links: [
+                {
+                    name: 'FLUENT-POSTS',
+                    url: '/fluent-posts',
+                    key: 'key1',
+                    isExpanded: true,
+                },
+                {
+                    name: 'СОЗДАТЬ ПОСТ',
+                    url: '/create-post',
+                    key: 'key2',
+                    isExpanded: true,
+                },
+                {
+                    name: 'GITHUB',
+                    url: 'https://github.com/MilanaSadykova',
+                    key: 'key3',
+                    isExpanded: true,
+                    isSelected: true
+                }
+            ]
+        }
+
+    ];
+
+
+
     return (
-        <nav>
-            <li className='main'><Link to='/fluent-posts'>FLUENT-POSTS</Link></li>
-            <li><Link to='/create-post' >СОЗДАТЬ ПОСТ</Link></li>
-            <li><a href='https://github.com/MilanaSadykova' >GITHUB</a></li>
-        </nav>
+        <Nav
+            selectedKey='key'
+            styles={navStyles}
+            groups={navLinks}
+        />
     )
 }
