@@ -1,7 +1,8 @@
-
 import React, { useState } from "react";
 import { TextField } from '@fluentui/react/lib/TextField';
 import { PrimaryButton } from '@fluentui/react';
+import { updateSaveButtonState } from '../../store/reducers/Reducer';
+import { useDispatch } from "react-redux";
 
 export const CreatePostPage = () => {
     const [userName, setUserName] = useState<string | undefined>('');
@@ -32,10 +33,13 @@ export const CreatePostPage = () => {
         setBody('');
     }
 
+    const dispatch = useDispatch();
+
     const handleOnSaveClick = () => {
         createApiPayload();
         createPostRequest();
-        removeInput()
+        removeInput();
+        dispatch(updateSaveButtonState(true));
     }
 
     const styles = { root: { width: 250 } }

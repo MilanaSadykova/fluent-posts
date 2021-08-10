@@ -4,7 +4,7 @@ import { getTheme } from '@fluentui/react/lib/Styling';
 import { DeleteButton } from './DeleteButton';
 import { initializeIcons } from '@fluentui/react/lib/Icons';
 import { useSelector } from 'react-redux';
-import { ButtonState } from 'src/reducers/buttonReducer';
+import { State } from '../../store/reducers/Reducer';
 import { ModalDialog } from './ModalDialog';
 
 export const FluentPosts = () => {
@@ -57,7 +57,7 @@ export const FluentPosts = () => {
         return null;
     };
 
-    const isButtonClicked = useSelector<ButtonState, boolean>(state => state.buttonClickState);
+    const isButtonClicked = useSelector<State, boolean>(state => state.DeleteButtonState);
 
     return (
         <section className='container-list'>
@@ -70,7 +70,7 @@ export const FluentPosts = () => {
                 layoutMode={DetailsListLayoutMode.justified}
             />
             <DeleteButton />
-            {isButtonClicked && 
+            {isButtonClicked &&
                 <ModalDialog />
             }
         </section >

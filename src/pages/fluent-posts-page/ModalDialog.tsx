@@ -1,7 +1,7 @@
 import React from "react";
 import { DefaultButton, PrimaryButton, Dialog, DialogType, DialogFooter } from '@fluentui/react';
 import { useDispatch } from "react-redux";
-import { closeDialog } from "../../reducers/buttonReducer";
+import { closeDialog } from "../../store/reducers/Reducer";
 
 export const ModalDialog = () => {
 

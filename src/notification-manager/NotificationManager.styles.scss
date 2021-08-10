@@ -1,0 +1,35 @@
+.notification-container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgb(50, 49, 48);
+    font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", "Roboto",
+        "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    pointer-events: auto;
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 25.6px 57.6px 0px, rgba(0, 0, 0, 0.18) 0px 4.8px 14.4px 0px;
+    border-radius: 2px;
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    outline: transparent solid 3px;
+    // max-height: calc(100% - 32px);
+    // max-width: calc(100% - 32px);
+    // min-height: 176px;
+    // min-width: 288px;
+    // overflow-y: auto;
+    // width: 288px;
+}
+
+.content {
+    font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", "Roboto",
+        "Helvetica Neue", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(50, 49, 48);
+    margin: 0px;
+    min-height: 20px;
+    padding: 16px 46px 20px 46px;
+    line-height: normal;
+}

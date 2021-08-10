@@ -1,6 +1,6 @@
 import React from "react";
 import { DefaultButton } from '@fluentui/react';
-import { updateButtonClickState } from '../../reducers/buttonReducer';
+import { updateDeleteButtonState } from '../../store/reducers/Reducer';
 import { useDispatch } from "react-redux";
 
 export const DeleteButton = () => {
@@ -8,7 +8,7 @@ export const DeleteButton = () => {
     const dispatch = useDispatch();
 
     const openModal = () => {
-        dispatch(updateButtonClickState(true))
+        dispatch(updateDeleteButtonState(true))
     };
 
     return (
