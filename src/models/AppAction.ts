@@ -1,5 +1,3 @@
-import { Action, AnyAction } from "redux";
+import { AnyAction } from "redux";
 
-export interface AppAction extends AnyAction {
-    
-}
+export interface AppAction extends AnyAction { }
