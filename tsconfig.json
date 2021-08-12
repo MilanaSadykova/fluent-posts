@@ -7,7 +7,18 @@
         "jsx": "react",
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
-        "baseUrl": "."
+        "baseUrl": ".",
+        "paths": {
+            "@components/*": [
+                "src/components/*"
+            ],
+            "@redux/*": [
+                "src/redux/*"
+            ],
+            "@models/*": [
+                "src/models/*"
+            ]
+        }
     },
     "include": [
         "src"

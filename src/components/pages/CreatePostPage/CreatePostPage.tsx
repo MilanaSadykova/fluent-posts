@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TextField } from '@fluentui/react/lib/TextField';
 import { PrimaryButton } from '@fluentui/react';
-import { updateSaveButtonState } from '../../store/reducers/Reducer';
+import { updateSaveButtonState } from '../../store/reducers/RootReducer';
 import { useDispatch } from "react-redux";
 
 export const CreatePostPage = () => {

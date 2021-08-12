@@ -4,13 +4,18 @@ const path = require('path');
 module.exports = {
     mode: 'development',
     target: 'web',
-    entry: './src/main.tsx',
+    entry: './src/index.tsx',
     output: {
         path: __dirname + '/build',
         publicPath: '/',
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss',]
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss',],
+        alias: {
+            'components': path.resolve(__dirname, 'src', 'components'),
+            'redux': path.resolve(__dirname, 'src', 'redux'),
+            'models': path.resolve(__dirname, 'src', 'models'),
+        }
     },
     devtool: 'inline-source-map',
     module: {
@@ -22,7 +27,7 @@ module.exports = {
                 include: [
                     path.resolve(__dirname, 'src'),
                 ],
-                test: /\.tsx$/,
+                test: /\.tsx?$/,
                 use: {
                     loader: 'babel-loader',
                     options: {
