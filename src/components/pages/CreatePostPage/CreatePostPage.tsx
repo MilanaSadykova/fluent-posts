@@ -1,48 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextField } from '@fluentui/react/lib/TextField';
 import { PrimaryButton } from '@fluentui/react';
-import { updateSaveButtonState } from '../../store/reducers/RootReducer';
-import { useDispatch } from "react-redux";
+import { fetchPosts } from "@redux/actions/GetPostsAction/NewPostsAction";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "@models/AppState";
+
+const styles = { root: { width: 250 } };
 
 export const CreatePostPage = () => {
     const [userName, setUserName] = useState<string | undefined>('');
     const [title, setTitle] = useState<string | undefined>('');
     const [body, setBody] = useState<string | undefined>('');
-
-    const createApiPayload = () => ({
-        postUserName: userName,
-        postTitle: title,
-        postBody: body
-    });
-
-    const createPostRequest = () => {
-        fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
-            },
-            body: JSON.stringify(createApiPayload())
-        })
-            .then(response => response.json())
-            .then(info => console.log(info))
-    };
-
-    const removeInput = () => {
-        setUserName('');
-        setTitle('');
-        setBody('');
-    }
-
     const dispatch = useDispatch();
+    const posts = useSelector((state: AppState) => state.posts);
 
-    const handleOnSaveClick = () => {
-        createApiPayload();
-        createPostRequest();
-        removeInput();
-        dispatch(updateSaveButtonState(true));
-    }
-
-    const styles = { root: { width: 250 } }
+    console.log(posts);
+    
+    useEffect(() => {
+        dispatch(fetchPosts());
+    }, []);
 
     return (
         <form className='create-post'>
@@ -65,7 +41,7 @@ export const CreatePostPage = () => {
                     onChange={(e, newValue) => setBody(newValue)}
                 />
             </div>
-            <PrimaryButton type='button' onClick={handleOnSaveClick} >Сохранить</PrimaryButton>
+            <PrimaryButton type='button'>Сохранить</PrimaryButton>
         </form>
     )
 }

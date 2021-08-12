@@ -4,7 +4,7 @@ import { CreatePostPage } from "@components/pages/CreatePostPage/CreatePostPage"
 
 export const App = () => 
     <BrowserRouter>
-        <Route exact path='create'>
+        <Route exact path='/create'>
             <CreatePostPage />
         </Route>
-    </BrowserRouter>
+    </BrowserRouter>;

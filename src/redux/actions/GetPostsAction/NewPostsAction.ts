@@ -3,15 +3,10 @@ import { AppAction } from "@models/AppAction";
 import { Post } from "@models/Post";
 import { PostsApiUtils } from "@utils/PostsApiUtils";
 import { Dispatch } from "react";
-import { ActionCreator } from "redux";
 
-class NewPostsAction implements AppAction {
+export interface NewPostsAction extends AppAction {
     type: ActionTypes.NEW_POSTS;
     newPosts: Post[];
-    constructor(newPosts: Post[]) {
-        this.type = ActionTypes.NEW_POSTS;
-        this.newPosts = newPosts;
-    }
 }
 
 /**
@@ -25,5 +20,8 @@ export const fetchPosts = () => (dispatch: Dispatch<NewPostsAction>) =>
                 // something bad
                 // return;
             }
-            dispatch(new NewPostsAction(payload));
+            dispatch({
+                type: ActionTypes.NEW_POSTS,
+                newPosts: payload
+            });
         })

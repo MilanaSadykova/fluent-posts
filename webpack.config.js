@@ -12,10 +12,10 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss',],
         alias: {
-            'components': path.resolve(__dirname, 'src', 'components'),
-            'redux': path.resolve(__dirname, 'src', 'redux'),
-            'models': path.resolve(__dirname, 'src', 'models'),
-            'utils': path.resolve(__dirname, 'src', 'utils'),
+            '@components': path.resolve(__dirname, 'src', 'components'),
+            '@redux': path.resolve(__dirname, 'src', 'redux'),
+            '@models': path.resolve(__dirname, 'src', 'models'),
+            '@utils': path.resolve(__dirname, 'src', 'utils'),
         }
     },
     devtool: 'inline-source-map',
