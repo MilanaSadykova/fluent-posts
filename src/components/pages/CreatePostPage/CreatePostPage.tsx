@@ -1,24 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { TextField } from '@fluentui/react/lib/TextField';
-import { PrimaryButton } from '@fluentui/react';
+import { MessageBarType, PrimaryButton } from '@fluentui/react';
 import { fetchPosts } from "@redux/actions/GetPostsAction/NewPostsAction";
 import { useDispatch, useSelector } from "react-redux";
-import { AppState } from "@models/AppState";
+import { displayNotification } from "@redux/actions/DisplayNotificationAction/DisplayNotificationAction";
 
 const styles = { root: { width: 250 } };
 
 export const CreatePostPage = () => {
-    const [userName, setUserName] = useState<string | undefined>('');
-    const [title, setTitle] = useState<string | undefined>('');
-    const [body, setBody] = useState<string | undefined>('');
+    const [userName, setUserName] = useState<string>();
+    const [title, setTitle] = useState<string>();
+    const [body, setBody] = useState<string>();
     const dispatch = useDispatch();
-    const posts = useSelector((state: AppState) => state.posts);
 
-    console.log(posts);
-    
     useEffect(() => {
         dispatch(fetchPosts());
     }, []);
+
+    const displaySuccessNotification = () =>
+        dispatch(
+            displayNotification({
+                type: MessageBarType.success,
+                message: 'All ok!'
+            })
+        )
+
+        const displayErrorNotification = () =>
+        dispatch(
+            displayNotification({
+                type: MessageBarType.error,
+                message: 'Something is broken!'
+            })
+        )
 
     return (
         <form className='create-post'>
@@ -42,6 +55,8 @@ export const CreatePostPage = () => {
                 />
             </div>
             <PrimaryButton type='button'>Сохранить</PrimaryButton>
+            <PrimaryButton type='button' onClick={displaySuccessNotification}>Success</PrimaryButton>
+            <PrimaryButton type='button' onClick={displayErrorNotification}>Error</PrimaryButton>
         </form>
     )
 }

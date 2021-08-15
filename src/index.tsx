@@ -17,6 +17,10 @@ const store: Store<AppState, AppAction> = createStore(
     )
 );
 
+import { initializeIcons } from '@fluentui/react/lib/Icons';
+
+initializeIcons();
+
 ReactDOM.render(
     <Provider store={store}>
         <App />
