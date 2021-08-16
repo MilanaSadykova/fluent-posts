@@ -1,17 +1,20 @@
-import { NotificationProps } from "@components/shared/Notification/Notification";
 import { ActionTypes } from "@models/ActionTypes";
 import { AppAction } from "@models/AppAction";
 import { NotificationConfig } from "@models/NotificationsConfig"
-import { Dispatch } from "react";
 
+/**
+ * DisplayNotification redux action
+ */
 export interface DisplayNotificationAction extends AppAction {
     type: ActionTypes.DISPLAY_NOTIFICATION;
     newNotification: NotificationConfig;
 };
 
-export const displayNotification = (newNotification: NotificationConfig) =>
-    (dispatch: Dispatch<DisplayNotificationAction>) =>
-        dispatch({
-            type: ActionTypes.DISPLAY_NOTIFICATION,
-            newNotification,
-        });
+/**
+ * Action creator for redux "Display Notification" action.
+ * @param {number} newNotification - новая нотификация
+ */
+export const displayNotification = (newNotification: NotificationConfig) => ({
+    type: ActionTypes.DISPLAY_NOTIFICATION,
+    newNotification,
+});

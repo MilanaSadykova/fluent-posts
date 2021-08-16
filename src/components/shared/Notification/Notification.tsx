@@ -3,12 +3,23 @@ import { useDispatch } from "react-redux";
 import { NotificationConfig } from "@models/NotificationsConfig";
 import { MessageBar, MessageBarType } from "@fluentui/react";
 import { closeNotification } from "@redux/actions/CloseNotificationAction/CloseNotificationAction";
-import { IdGenerator } from "@utils/IdGenerator";
 
+/**
+ * Интерфейс, расширяющий интерфейс NotificationConfig полем id для добавления id каждому созданному объекту newNotification. 
+ */
 export interface NotificationProps extends NotificationConfig {
     id: number;
 }
 
+/**
+ * Репрезентативная компонента, отображающая нотификацию.
+ * 
+ * @param  {number} id - id нотификации
+ * @param  {DialogType} type - тип нотификации
+ * @param  {sting} message - содержание нотификации
+ * @param  {number} lifetime - количество времени отображения нотификации в миллисекундах
+ * @returns 
+ */
 export const Notification = ({
     id,
     type = MessageBarType.info,
@@ -28,6 +39,7 @@ export const Notification = ({
             return;
         } 
         closeTimeoutId.current = setTimeout(onCloseNotification, lifetime);
+        //  TODO - добавить callback, делающий clear setTimeout, когда нотификация была закрыта на крестик
     }, []);
 
     const onCloseNotification = () =>

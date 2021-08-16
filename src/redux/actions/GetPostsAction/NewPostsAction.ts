@@ -4,6 +4,9 @@ import { Post } from "@models/Post";
 import { PostsApiUtils } from "@utils/PostsApiUtils";
 import { Dispatch } from "react";
 
+/**
+ * NewPost redux action
+ */
 export interface NewPostsAction extends AppAction {
     type: ActionTypes.NEW_POSTS;
     newPosts: Post[];

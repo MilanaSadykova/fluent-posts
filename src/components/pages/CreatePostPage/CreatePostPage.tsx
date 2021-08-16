@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { TextField } from '@fluentui/react/lib/TextField';
-import { MessageBarType, PrimaryButton } from '@fluentui/react';
+import { Dialog, MessageBarType, PrimaryButton } from '@fluentui/react';
 import { fetchPosts } from "@redux/actions/GetPostsAction/NewPostsAction";
 import { useDispatch, useSelector } from "react-redux";
 import { displayNotification } from "@redux/actions/DisplayNotificationAction/DisplayNotificationAction";
+import { displayModal } from "@redux/actions/DisplayModalAction/DisplayModalAction";
 
 const styles = { root: { width: 250 } };
 
@@ -17,21 +18,13 @@ export const CreatePostPage = () => {
         dispatch(fetchPosts());
     }, []);
 
-    const displaySuccessNotification = () =>
+    const openModal = () =>
         dispatch(
-            displayNotification({
-                type: MessageBarType.success,
-                message: 'All ok!'
+            displayModal({
+                title: 'Вы уверены?',
+                subText: 'Вы точно уверены?'
             })
-        )
-
-        const displayErrorNotification = () =>
-        dispatch(
-            displayNotification({
-                type: MessageBarType.error,
-                message: 'Something is broken!'
-            })
-        )
+        );
 
     return (
         <form className='create-post'>
@@ -54,9 +47,7 @@ export const CreatePostPage = () => {
                     onChange={(e, newValue) => setBody(newValue)}
                 />
             </div>
-            <PrimaryButton type='button'>Сохранить</PrimaryButton>
-            <PrimaryButton type='button' onClick={displaySuccessNotification}>Success</PrimaryButton>
-            <PrimaryButton type='button' onClick={displayErrorNotification}>Error</PrimaryButton>
+            <PrimaryButton onClick={openModal} type='button'>Сохранить</PrimaryButton>
         </form>
     )
 }
